@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:tns="http://ACORD.org/Standards/Life/2" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ACORD.org/Standards/Life/2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TXLife">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="TXLifeResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransRefGUID" type="xs:string" />
+              <xs:element name="TransType">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TransSubType">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TransExeDate" type="xs:date" />
+              <xs:element name="TransExeTime" type="xs:time" />
+              <xs:element name="ChangeSubType">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TranContentCode">
+                      <xs:complexType>
+                        <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TransResult">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ResultCode">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ResultInfo">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ResultInfoDesc" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OLifE">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FormInstance">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="FormResponse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="AssociatedResponseData">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="ActualObjectType">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Holding">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="HoldingSysKey" type="xs:unsignedInt" />
+                          <xs:element name="Policy">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="PolNumber" type="xs:unsignedLong" />
+                                <xs:element name="ProductType">
+                                  <xs:complexType>
+                                    <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="CarrierCode" type="xs:string" />
+                                <xs:element name="EffDate" type="xs:date" />
+                                <xs:element name="Claim">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="LossReportDate" type="xs:date" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="id" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Attachment">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="DateCreated" type="xs:date" />
+                                <xs:element name="UserCode" />
+                                <xs:element name="AttachmentData">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AttachmentLocation">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="id" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="Party">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PartyKey" type="xs:string" />
+                          <xs:element name="IDReferenceNo" type="xs:string" />
+                          <xs:element name="IDReferenceType">
+                            <xs:complexType>
+                              <xs:attribute name="tc" type="xs:unsignedByte" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="Organization" />
+                          <xs:element minOccurs="0" name="Person">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="FirstName" type="xs:string" />
+                                <xs:element name="LastName" type="xs:string" />
+                                <xs:element name="NickName" type="xs:string" />
+                                <xs:element name="Title" type="xs:unsignedByte" />
+                                <xs:element name="Gender">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BirthDate" type="xs:date" />
+                                <xs:element name="BirthCountry">
+                                  <xs:complexType>
+                                    <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="Address">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Line1" type="xs:string" />
+                                <xs:element name="Line2" type="xs:string" />
+                                <xs:element name="Line4" type="xs:string" />
+                                <xs:element name="Zip" type="xs:unsignedShort" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="PriorName" />
+                          <xs:element minOccurs="0" name="Risk">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="OLifEExtension">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Impairment">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="ImpairmentCode" type="xs:string" />
+                                            <xs:element minOccurs="0" name="ImpairmentSymbols" type="xs:string" />
+                                            <xs:element name="ImpairmentSpecialInvestigations" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="VendorCode" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="Relation">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RelatedObjectType">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="RelationRoleCode">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="tc" type="xs:unsignedByte" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                        <xs:attribute name="OriginatingObjectID" type="xs:string" use="required" />
+                        <xs:attribute name="RelatedObjectID" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

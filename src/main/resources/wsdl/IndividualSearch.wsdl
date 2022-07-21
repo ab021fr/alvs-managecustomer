@@ -1,0 +1,425 @@
+  <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://LOA.co.za/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="SearchService" targetNamespace="http://LOA.co.za/">
+<wsp:Policy wsu:Id="BasicHttpsBinding_ISearchService_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:TransportToken>
+<wsp:Policy>
+<sp:HttpsToken RequireClientCertificate="false"/>
+</wsp:Policy>
+</sp:TransportToken>
+<sp:AlgorithmSuite>
+<wsp:Policy>
+<sp:Basic256/>
+</wsp:Policy>
+</sp:AlgorithmSuite>
+<sp:Layout>
+<wsp:Policy>
+<sp:Strict/>
+</wsp:Policy>
+</sp:Layout>
+</wsp:Policy>
+</sp:TransportBinding>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://LOA.co.za/">
+<xs:element name="IndividualSearch">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Surname" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename1" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename2" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename3" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IDType" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IDNUmber" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DOBStart" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DOBEnd" nillable="true" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnquiryReason">
+<xs:restriction base="xs:string">
+<xs:enumeration value="UnderWriting"/>
+<xs:enumeration value="Claim"/>
+<xs:enumeration value="SpecialInvestigation"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="IndividualSearchResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IndividualSearchResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="IndividualSearchWithRoleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Surname" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename1" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename2" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="Forename3" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IDType" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="IDNUmber" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="RoleType" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DOBStart" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="1" maxOccurs="1" name="DOBEnd" nillable="true" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="IndividualSearchWithRoleTypeResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="IndividualSearchWithRoleTypeResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CompanySearch">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="TradingName" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="SMDCNo" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="FuneralParlourNo" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="TelNo" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CompnanyRegNo" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="FSBNo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CompanySearchResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="CompanySearchResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="PolicyNumberSearch">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="PolicyNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="PolicyNumberSearchResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="PolicyNumberSearchResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ClaimNumberSearch">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="ClaimNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ClaimNumberSearchResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ClaimNumberSearchResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ReferenceNumberSearch">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="EnquiryReasonValue" type="tns:EnquiryReason"/>
+<xs:element minOccurs="0" maxOccurs="1" name="RefNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ReferenceNumberSearchResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="ReferenceNumberSearchResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetNotificationByID">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="1" maxOccurs="1" name="NotificationID" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetNotificationByIDResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="GetNotificationByIDResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetNotificationsHeadersList">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="SubscriberCode" type="xs:string"/>
+<xs:element minOccurs="0" maxOccurs="1" name="CommaSeperatedNotificationList" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetNotificationsHeadersListResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="1" name="GetNotificationsHeadersListResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="ISearchService_IndividualSearch_InputMessage">
+<wsdl:part name="parameters" element="tns:IndividualSearch"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_IndividualSearch_OutputMessage">
+<wsdl:part name="parameters" element="tns:IndividualSearchResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_IndividualSearchWithRoleType_InputMessage">
+<wsdl:part name="parameters" element="tns:IndividualSearchWithRoleType"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_IndividualSearchWithRoleType_OutputMessage">
+<wsdl:part name="parameters" element="tns:IndividualSearchWithRoleTypeResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_CompanySearch_InputMessage">
+<wsdl:part name="parameters" element="tns:CompanySearch"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_CompanySearch_OutputMessage">
+<wsdl:part name="parameters" element="tns:CompanySearchResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_PolicyNumberSearch_InputMessage">
+<wsdl:part name="parameters" element="tns:PolicyNumberSearch"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_PolicyNumberSearch_OutputMessage">
+<wsdl:part name="parameters" element="tns:PolicyNumberSearchResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_ClaimNumberSearch_InputMessage">
+<wsdl:part name="parameters" element="tns:ClaimNumberSearch"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_ClaimNumberSearch_OutputMessage">
+<wsdl:part name="parameters" element="tns:ClaimNumberSearchResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_ReferenceNumberSearch_InputMessage">
+<wsdl:part name="parameters" element="tns:ReferenceNumberSearch"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_ReferenceNumberSearch_OutputMessage">
+<wsdl:part name="parameters" element="tns:ReferenceNumberSearchResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_GetNotificationByID_InputMessage">
+<wsdl:part name="parameters" element="tns:GetNotificationByID"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_GetNotificationByID_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetNotificationByIDResponse"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_GetNotificationsHeadersList_InputMessage">
+<wsdl:part name="parameters" element="tns:GetNotificationsHeadersList"/>
+</wsdl:message>
+<wsdl:message name="ISearchService_GetNotificationsHeadersList_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetNotificationsHeadersListResponse"/>
+</wsdl:message>
+<wsdl:portType name="ISearchService">
+<wsdl:operation name="IndividualSearch">
+<wsdl:input wsaw:Action="http://LOA.co.za/IndividualSearch" message="tns:ISearchService_IndividualSearch_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/IndividualSearchResponse" message="tns:ISearchService_IndividualSearch_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="IndividualSearchWithRoleType">
+<wsdl:input wsaw:Action="http://LOA.co.za/IndividualSearchWithRoleType" message="tns:ISearchService_IndividualSearchWithRoleType_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/IndividualSearchWithRoleTypeResponse" message="tns:ISearchService_IndividualSearchWithRoleType_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CompanySearch">
+<wsdl:input wsaw:Action="http://LOA.co.za/CompanySearch" message="tns:ISearchService_CompanySearch_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/CompanySearchResponse" message="tns:ISearchService_CompanySearch_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="PolicyNumberSearch">
+<wsdl:input wsaw:Action="http://LOA.co.za/PolicyNumberSearch" message="tns:ISearchService_PolicyNumberSearch_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/PolicyNumberSearchResponse" message="tns:ISearchService_PolicyNumberSearch_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ClaimNumberSearch">
+<wsdl:input wsaw:Action="http://LOA.co.za/ClaimNumberSearch" message="tns:ISearchService_ClaimNumberSearch_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/ClaimNumberSearchResponse" message="tns:ISearchService_ClaimNumberSearch_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ReferenceNumberSearch">
+<wsdl:input wsaw:Action="http://LOA.co.za/ReferenceNumberSearch" message="tns:ISearchService_ReferenceNumberSearch_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/ReferenceNumberSearchResponse" message="tns:ISearchService_ReferenceNumberSearch_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationByID">
+<wsdl:input wsaw:Action="http://LOA.co.za/GetNotificationByID" message="tns:ISearchService_GetNotificationByID_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/GetNotificationByIDResponse" message="tns:ISearchService_GetNotificationByID_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationsHeadersList">
+<wsdl:input wsaw:Action="http://LOA.co.za/GetNotificationsHeadersList" message="tns:ISearchService_GetNotificationsHeadersList_InputMessage"/>
+<wsdl:output wsaw:Action="http://LOA.co.za/ISearchService/GetNotificationsHeadersListResponse" message="tns:ISearchService_GetNotificationsHeadersList_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BasicHttpBinding_ISearchService" type="tns:ISearchService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IndividualSearch">
+<soap:operation soapAction="http://LOA.co.za/IndividualSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IndividualSearchWithRoleType">
+<soap:operation soapAction="http://LOA.co.za/IndividualSearchWithRoleType" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CompanySearch">
+<soap:operation soapAction="http://LOA.co.za/CompanySearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/PolicyNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ClaimNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/ClaimNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ReferenceNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/ReferenceNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationByID">
+<soap:operation soapAction="http://LOA.co.za/GetNotificationByID" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationsHeadersList">
+<soap:operation soapAction="http://LOA.co.za/GetNotificationsHeadersList" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="BasicHttpsBinding_ISearchService" type="tns:ISearchService">
+<wsp:PolicyReference URI="#BasicHttpsBinding_ISearchService_policy"/>
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IndividualSearch">
+<soap:operation soapAction="http://LOA.co.za/IndividualSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IndividualSearchWithRoleType">
+<soap:operation soapAction="http://LOA.co.za/IndividualSearchWithRoleType" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CompanySearch">
+<soap:operation soapAction="http://LOA.co.za/CompanySearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="PolicyNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/PolicyNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ClaimNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/ClaimNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ReferenceNumberSearch">
+<soap:operation soapAction="http://LOA.co.za/ReferenceNumberSearch" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationByID">
+<soap:operation soapAction="http://LOA.co.za/GetNotificationByID" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetNotificationsHeadersList">
+<soap:operation soapAction="http://LOA.co.za/GetNotificationsHeadersList" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SearchService">
+<wsdl:port name="BasicHttpBinding_ISearchService" binding="tns:BasicHttpBinding_ISearchService">
+<soap:address location="http://test.astutefse.com/online/rs_searchservice"/>
+</wsdl:port>
+<wsdl:port name="BasicHttpsBinding_ISearchService" binding="tns:BasicHttpsBinding_ISearchService">
+<soap:address location="https://test.astutefse.com/online/rs_searchservice"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
